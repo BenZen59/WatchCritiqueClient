@@ -1,0 +1,70 @@
+@import 'react-slideshow-image/dist/styles.css';
+
+.slideContain {
+  background: #1fe0;
+  height: 60%;
+}
+
+.popMovieImg {
+  width: 320px;
+  height: 430px;
+  margin: 1px;
+  box-shadow: 20px 10px 23px -10px black;
+}
+
+.imgContain {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  margin-bottom: -80px;
+}
+
+/* -------------------MQ----------------- */
+
+@media (min-width: 800px) {
+  .popMovieImg {
+    width: 15.7%;
+    height: 27%;
+    margin-bottom: 13vh;
+  }
+
+  .imgContain {
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+  }
+}
+
+.react-slideshow-wrapper.slide {
+  width: 100%;
+}
+
+.actuFilm{
+  font-size: 38px;
+  line-height: 45px;
+  color: rgb(26, 26, 26);
+  margin-top: 39px;
+  margin-left: 39px;
+  font-family: Sora, sans-serif;
+  font-weight: 700;
+}
+
+.sectionActu
+{
+  font-size: 20px;
+  line-height: 45px;
+  color: rgb(26, 26, 26);
+  margin-left: 39px;
+  font-family: Sora, sans-serif;
+  font-weight: 700;
+}
+
+.trait{
+  font-size: 38px;
+  line-height: 45px;
+  color: rgb(26, 26, 26);
+  margin-left: 39px;
+  margin-bottom: -29px;
+  margin-top: -59px;
+  font-family: Sora, sans-serif;
+}
