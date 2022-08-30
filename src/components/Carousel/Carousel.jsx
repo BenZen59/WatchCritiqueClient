@@ -14,7 +14,7 @@ export default function Carousel() {
     indicators: false,
     arrows: true,
     canSwipe: true,
-    slidesToShow: 5,
+    slidesToShow: 10,
     slidesToScroll: 1,
     scale: 1.5,
   });
@@ -22,7 +22,7 @@ export default function Carousel() {
   useEffect(() => {
     setProperties({
       ...properties,
-      slidesToShow: window.matchMedia('(min-width: 780px)').matches ? 5 : 1,
+      slidesToShow: window.matchMedia('(min-width: 780px)').matches ? 10 : 1,
     });
     axios
       .get(
@@ -48,7 +48,7 @@ export default function Carousel() {
   useEffect(() => {
     setProperties({
       ...properties,
-      slidesToShow: window.matchMedia('(min-width: 780px)').matches ? 5 : 1,
+      slidesToShow: window.matchMedia('(min-width: 780px)').matches ? 10 : 1,
     });
     axios
       .get(
@@ -74,7 +74,7 @@ export default function Carousel() {
   useEffect(() => {
     setProperties({
       ...properties,
-      slidesToShow: window.matchMedia('(min-width: 780px)').matches ? 5 : 1,
+      slidesToShow: window.matchMedia('(min-width: 780px)').matches ? 10 : 1,
     });
     axios
       .get(
@@ -102,7 +102,7 @@ export default function Carousel() {
       <p className='actuFilm'>ACTUALITÉ FILMS</p>
       <p className='sectionActu'>LES FILMS POPULAIRES DU MOMENT</p>
       <p className='trait'>
-        _______________________________________________________________________________________
+        ________________________________________________________________________________________
       </p>
       <section className='slideContain'>
         <Slide {...properties}>
@@ -122,7 +122,7 @@ export default function Carousel() {
       </section>
       <p className='sectionActu'>EN CE MOMENT AU CINÉMA</p>
       <p className='trait'>
-        _______________________________________________________________________________________
+        ________________________________________________________________________________________
       </p>
       <section className='slideContain'>
         <Slide {...properties}>
@@ -142,7 +142,7 @@ export default function Carousel() {
       </section>
       <p className='sectionActu'>LES FILMS AVEC LA MEILLEURE NOTATION</p>
       <p className='trait'>
-        _______________________________________________________________________________________
+        ________________________________________________________________________________________
       </p>
       <section className='slideContain'>
         <Slide {...properties}>
