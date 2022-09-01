@@ -1,12 +1,10 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import moment from 'moment';
 import './Film.css';
 
 export default function Film() {
   const [title, setTitle] = useState([]);
   const [voteAverage, setVoteAverage] = useState([]);
-  const [numberVote, setNumberVote] = useState([]);
   const [backdrop, setBackdrop] = useState([]);
   const [director, setDirector] = useState([]);
   const [overview, setOverview] = useState([]);
@@ -20,12 +18,11 @@ export default function Film() {
   useEffect(() => {
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/28422?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=FR'
+        'https://api.themoviedb.org/3/movie/556694?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=FR'
       )
       .then(({ data }) => {
         setTitle(data.title);
         setVoteAverage(data.vote_average);
-        setNumberVote(data.vote_count);
         setOverview(data.overview);
         setRuntime(data.runtime);
         setReleaseDate(data.release_date);
@@ -36,7 +33,7 @@ export default function Film() {
   useEffect(() => {
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/28422/release_dates?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
+        'https://api.themoviedb.org/3/movie/556694/release_dates?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
       )
       .then(({ data }) => {
         setReleaseDateCountry(data.results[0].release_dates[0].release_date);
@@ -47,7 +44,7 @@ export default function Film() {
   useEffect(() => {
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/28422/credits?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US'
+        'https://api.themoviedb.org/3/movie/556694/credits?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US'
       )
       .then(({ data }) => {
         setDirector(data.crew);
@@ -58,7 +55,7 @@ export default function Film() {
   useEffect(() => {
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/28422/images?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
+        'https://api.themoviedb.org/3/movie/556694/images?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
       )
       .then(({ data }) => {
         setBackdrop(data.posters[0].file_path);
@@ -81,11 +78,47 @@ export default function Film() {
       const min = runtime % 60;
       return `${hour} H ${min} `;
     }
-
     return `${runtime} min`;
   };
+
+  const RatingPercentage = () => {
+    const pourcentage = Math.round((voteAverage / 10) * 100);
+    console.log(pourcentage);
+    return pourcentage;
+  };
+
+  const circleRating = () => {
+    const calcul = Math.round(174 - (174 * voteAverage) / 10);
+    const circle = document.getElementById('circle');
+    if (voteAverage < 7 && voteAverage >= 5) {
+      circle.style.stroke = '#D2D531';
+    } else if (voteAverage < 5 && voteAverage >= 0) {
+      circle.style.stroke = 'red';
+    } else {
+      circle.style.stroke = '#21CC77';
+    }
+
+    let dynamicStyles = null;
+    function addAnimation(body) {
+      if (!dynamicStyles) {
+        dynamicStyles = document.createElement('style');
+        dynamicStyles.type = 'text/css';
+        document.head.appendChild(dynamicStyles);
+      }
+      dynamicStyles.sheet.insertRule(body, dynamicStyles.length);
+    }
+    addAnimation(`
+    @keyframes circle {
+      to {
+        stroke-dashoffset: ${calcul};
+      }
+    }
+    `);
+  };
+
   return (
     <div>
+      {circleRating()}
       <div className='infoFilm'>
         <img
           className='backgroundPoster'
@@ -111,6 +144,17 @@ export default function Film() {
                 })}
               </div>
               • {Runtime()}
+            </div>
+            <br />
+            <div className='espaceNote'>
+              <div className='boxRating'>
+                <svg>
+                  <circle cx='28px' cy='28px' r='28px'></circle>
+                  <circle cx='28px' cy='28px' r='28px' id='circle'></circle>
+                </svg>
+                <span className='rating'>{RatingPercentage()} %</span>
+              </div>
+              <span className='noteutilisateurs'>Note des utilisateurs</span>
             </div>
             <br />
             <span className='synopsis'>Synopsis</span>
