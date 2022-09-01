@@ -12,6 +12,7 @@ export default function Film() {
   const [overview, setOverview] = useState([]);
   const [runtime, setRuntime] = useState([]);
   const [releaseDate, setReleaseDate] = useState([]);
+  const [iso, setIso] = useState([]);
   const [actor, setActor] = useState([]);
   const [genre, setGenre] = useState([]);
   const [releaseDateCountry, setReleaseDateCountry] = useState([]);
@@ -19,10 +20,10 @@ export default function Film() {
   useEffect(() => {
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/762504?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=FR'
+        'https://api.themoviedb.org/3/movie/28422?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=FR'
       )
       .then(({ data }) => {
-        setTitle(data.original_title);
+        setTitle(data.title);
         setVoteAverage(data.vote_average);
         setNumberVote(data.vote_count);
         setOverview(data.overview);
@@ -35,17 +36,18 @@ export default function Film() {
   useEffect(() => {
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/762504/release_dates?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
+        'https://api.themoviedb.org/3/movie/28422/release_dates?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
       )
       .then(({ data }) => {
-        setReleaseDateCountry(data.results[19].release_dates[0].release_date);
+        setReleaseDateCountry(data.results[0].release_dates[0].release_date);
+        setIso(data.results);
       });
   }, []);
 
   useEffect(() => {
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/762504/credits?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US'
+        'https://api.themoviedb.org/3/movie/28422/credits?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US'
       )
       .then(({ data }) => {
         setDirector(data.crew);
@@ -56,7 +58,7 @@ export default function Film() {
   useEffect(() => {
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/762504/images?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=FR'
+        'https://api.themoviedb.org/3/movie/28422/images?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
       )
       .then(({ data }) => {
         setBackdrop(data.posters[0].file_path);
@@ -69,7 +71,8 @@ export default function Film() {
   };
 
   const TrueDate = () => {
-    return moment(releaseDateCountry).utc().format('YYYY/MM/DD');
+    let truedate = releaseDateCountry;
+    return truedate.slice(0, 10);
   };
 
   const Runtime = () => {
@@ -95,7 +98,13 @@ export default function Film() {
           <br />
           <span className='text'>
             <div className='genre'>
-              {TrueDate()} (FR) •
+              {TrueDate()} (
+              {iso
+                .filter((iso) => iso.iso_3166_1.includes('FR'))
+                .map((iso) => {
+                  return <>{iso.iso_3166_1}</>;
+                })}
+              )•
               <div className='genre'>
                 {genre.map((event) => {
                   return <span>- {event.name} - </span>;
@@ -107,7 +116,7 @@ export default function Film() {
             <span className='synopsis'>Synopsis</span>
             <br />
             <br />
-            {overview}
+            <div className='overview'>{overview}</div>
             <br />
             {director
               .filter(
@@ -125,6 +134,27 @@ export default function Film() {
               })}
           </span>
         </div>
+      </div>
+      <h3 className='teteAffiche'>Têtes d'affiche</h3>
+      <div className='actors'>
+        {actor
+          .filter((actor) => actor.order < 10)
+          .map((actor) => {
+            const actorPoster = actor.profile_path
+              ? `https://image.tmdb.org/t/p/original${actor.profile_path}`
+              : `https://via.placeholder.com/220x330/FFFFFF/000000/?text=no image`;
+
+            return (
+              <div>
+                <img src={actorPoster} alt='actor' />
+                <p>
+                  <span>{actor.name}</span>
+                  <br />
+                  {actor.character}
+                </p>
+              </div>
+            );
+          })}
       </div>
     </div>
   );
