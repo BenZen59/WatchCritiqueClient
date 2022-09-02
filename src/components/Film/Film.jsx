@@ -94,7 +94,7 @@ export default function Film() {
       circle.style.stroke = '#21CC77';
     } else if (voteAverage < 7 && voteAverage >= 5) {
       circle.style.stroke = '#D2D531';
-    } else if (voteAverage < 5) {
+    } else if (voteAverage < 5 && voteAverage >= 0.01) {
       circle.style.stroke = '#f90202';
     }
   };
