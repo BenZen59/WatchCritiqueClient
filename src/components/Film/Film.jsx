@@ -15,11 +15,13 @@ export default function Film() {
   const [actor, setActor] = useState([]);
   const [genre, setGenre] = useState([]);
   const [releaseDateCountry, setReleaseDateCountry] = useState([]);
+  const [color, setColor] = useState([]);
+  const [dashoffset, setDashoffset] = useState([]);
 
   useEffect(() => {
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/545611?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=FR'
+        'https://api.themoviedb.org/3/movie/830788?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=FR'
       )
       .then(({ data }) => {
         setTitle(data.title);
@@ -34,7 +36,7 @@ export default function Film() {
   useEffect(() => {
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/545611/release_dates?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
+        'https://api.themoviedb.org/3/movie/830788/release_dates?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
       )
       .then(({ data }) => {
         setReleaseDateCountry(data.results[0].release_dates[0].release_date);
@@ -45,7 +47,7 @@ export default function Film() {
   useEffect(() => {
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/545611/credits?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US'
+        'https://api.themoviedb.org/3/movie/830788/credits?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US'
       )
       .then(({ data }) => {
         setDirector(data.crew);
@@ -56,7 +58,7 @@ export default function Film() {
   useEffect(() => {
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/545611/images?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
+        'https://api.themoviedb.org/3/movie/830788/images?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
       )
       .then(({ data }) => {
         setBackdrop(data.posters[0].file_path);
@@ -84,39 +86,35 @@ export default function Film() {
 
   const RatingPercentage = () => {
     const pourcentage = Math.round((voteAverage / 10) * 100);
-    console.log(pourcentage);
     return pourcentage;
   };
 
   const Changecolor = () => {
-    const circle = document.getElementById('circle');
     if (voteAverage < 10 && voteAverage >= 7) {
-      circle.style.stroke = '#21CC77';
+      setColor('#21CC77');
     } else if (voteAverage < 7 && voteAverage >= 5) {
-      circle.style.stroke = '#D2D531';
-    } else if (voteAverage < 5 && voteAverage >= 0.01) {
-      circle.style.stroke = '#f90202';
+      setColor('#D2D531');
+    } else if (voteAverage < 5) {
+      setColor('#f90202');
     }
   };
+
+  useEffect(() => {
+    Changecolor();
+  });
+
   const circleRating = () => {
     const calcul = Math.round(174 - (174 * voteAverage) / 10);
-    Changecolor();
-    let dynamicStyles = null;
-    function addAnimation(body) {
-      if (!dynamicStyles) {
-        dynamicStyles = document.createElement('style');
-        dynamicStyles.type = 'text/css';
-        document.head.appendChild(dynamicStyles);
-      }
-      dynamicStyles.sheet.insertRule(body, dynamicStyles.length);
-    }
-    addAnimation(`
-    @keyframes circle {
-      to {
-        stroke-dashoffset: ${calcul};
-      }
-    }
-    `);
+    setDashoffset(calcul);
+  };
+
+  useEffect(() => {
+    circleRating();
+  });
+
+  const circleStyle = {
+    stroke: color,
+    strokeDashoffset: dashoffset,
   };
 
   return (
@@ -152,7 +150,12 @@ export default function Film() {
               <div className='boxRating'>
                 <svg>
                   <circle cx='28px' cy='28px' r='28px'></circle>
-                  <circle cx='28px' cy='28px' r='28px' id='circle'></circle>
+                  <circle
+                    cx='28px'
+                    cy='28px'
+                    r='28px'
+                    style={circleStyle}
+                  ></circle>
                 </svg>
                 <span className='rating'>{RatingPercentage()} %</span>
               </div>
@@ -208,7 +211,6 @@ export default function Film() {
             );
           })}
       </div>
-      {circleRating()}
     </div>
   );
 }
