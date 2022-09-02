@@ -17,7 +17,7 @@ export default function Header() {
           <i class='fa fa-search'></i>
         </button>
       </form>
-      <img src={Login} alt='logimg' className='logImg' title='LogIn' />
+      <img src={Login} alt='logimg' className='logImg' title='Login' />
     </div>
   );
 }

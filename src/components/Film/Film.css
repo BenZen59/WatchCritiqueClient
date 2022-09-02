@@ -118,13 +118,11 @@ svg circle{
   stroke-dasharray: 174;
   stroke-dashoffset: 174;
   stroke-linecap: round;
-  
-  /* 224 100 % */
 }
 
 svg circle:nth-child(1){
   stroke: rgb(188, 188, 188);
-  stroke-dashoffset: 0;
+  stroke-dashoffset: 1;
 }
 
 svg circle:nth-child(2){
@@ -157,4 +155,18 @@ svg circle:nth-child(2){
 .espaceNote{
   display: flex;
   height: 70px;
+}
+
+.buttonaddlist{
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 25px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.buttonaddlist img{
+  width: 24px;
+  height: 24px;
 }
