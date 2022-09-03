@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Addlist from '../../img/addlist.png';
+import Play from '../../img/play.png';
 import './Film.css';
 
 export default function Film() {
@@ -8,6 +9,7 @@ export default function Film() {
   const [voteAverage, setVoteAverage] = useState([]);
   const [backdrop, setBackdrop] = useState([]);
   const [director, setDirector] = useState([]);
+  const [trailer, setTrailer] = useState([]);
   const [overview, setOverview] = useState([]);
   const [runtime, setRuntime] = useState([]);
   const [releaseDate, setReleaseDate] = useState([]);
@@ -21,7 +23,7 @@ export default function Film() {
   useEffect(() => {
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/830788?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=FR'
+        'https://api.themoviedb.org/3/movie/10228?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=FR'
       )
       .then(({ data }) => {
         setTitle(data.title);
@@ -36,7 +38,7 @@ export default function Film() {
   useEffect(() => {
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/830788/release_dates?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
+        'https://api.themoviedb.org/3/movie/10228/release_dates?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
       )
       .then(({ data }) => {
         setReleaseDateCountry(data.results[0].release_dates[0].release_date);
@@ -47,7 +49,7 @@ export default function Film() {
   useEffect(() => {
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/830788/credits?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US'
+        'https://api.themoviedb.org/3/movie/10228/credits?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US'
       )
       .then(({ data }) => {
         setDirector(data.crew);
@@ -58,10 +60,23 @@ export default function Film() {
   useEffect(() => {
     axios
       .get(
-        'https://api.themoviedb.org/3/movie/830788/images?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
+        'https://api.themoviedb.org/3/movie/10228/images?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
       )
       .then(({ data }) => {
         setBackdrop(data.posters[0].file_path);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/10228/videos?api_key=599ded6f0fc3bcaee1882e83ae0d438a`
+      )
+      .then(({ data }) => {
+        setTrailer(data.results);
+      })
+      .catch(() => {
+        setTrailer([]);
       });
   }, []);
 
@@ -94,14 +109,10 @@ export default function Film() {
       setColor('#21CC77');
     } else if (voteAverage < 7 && voteAverage >= 5) {
       setColor('#D2D531');
-    } else if (voteAverage < 5) {
+    } else {
       setColor('#f90202');
     }
   };
-
-  useEffect(() => {
-    Changecolor();
-  });
 
   const circleRating = () => {
     const calcul = Math.round(174 - (174 * voteAverage) / 10);
@@ -110,6 +121,7 @@ export default function Film() {
 
   useEffect(() => {
     circleRating();
+    Changecolor();
   });
 
   const circleStyle = {
@@ -166,6 +178,24 @@ export default function Film() {
               >
                 <img src={Addlist} alt='imageaddlist' />
               </button>
+              {typeof trailer !== 'undefined' &&
+                trailer
+                  .filter((trailer) => trailer.type.includes('Trailer'))
+                  .map((trailer) => {
+                    return (
+                      <>
+                        <a
+                          href={`https://www.youtube.com/embed/${trailer.key}`}
+                          target='_blank'
+                          rel='noreferrer'
+                        >
+                          <button className='buttonplay' title={trailer.name}>
+                            <img src={Play} alt='imagetrailer' />
+                          </button>
+                        </a>
+                      </>
+                    );
+                  })}
             </div>
             <br />
             <span className='synopsis'>Synopsis</span>
