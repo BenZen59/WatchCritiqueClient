@@ -43,9 +43,9 @@ export default function Login() {
     });
   }, []);
   return (
-    <div className='Login'>
-      <div className='login'>
-        <h1 className='h1login'>Login</h1>
+    <div>
+      <h1 className='h1login'>Login</h1>
+      <div className='Login'>
         <label>Username</label>
         <input
           type='text'
