@@ -40,9 +40,18 @@
   margin-left: 10px;
 }
 
-.logImg{
-  height: 70%;
+.buttonlogin{
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 25px;
   margin-left: 480px;
-  margin-top: 10px;
-  cursor: pointer
+  margin-top: 15px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.buttonlogin img{
+  width: 24px;
+  height: 24px;
 }

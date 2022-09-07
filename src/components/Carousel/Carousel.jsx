@@ -1,6 +1,6 @@
 import { Slide } from 'react-slideshow-image';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import Axios from 'axios';
 import './Carousel.css';
 
 export default function Carousel() {
@@ -24,25 +24,19 @@ export default function Carousel() {
       ...properties,
       slidesToShow: window.matchMedia('(min-width: 780px)').matches ? 10 : 1,
     });
-    axios
-      .get(
-        'https://api.themoviedb.org/3/movie/popular?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US&page=1'
-      )
-
-      .then(({ data }) => {
-        setMoviePopular(data.results);
-      });
+    Axios.get(
+      'https://api.themoviedb.org/3/movie/popular?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US&page=1'
+    ).then(({ data }) => {
+      setMoviePopular(data.results);
+    });
   }, [window.innerWidth]);
 
   useEffect(() => {
-    axios
-      .get(
-        'https://api.themoviedb.org/3/movie/popular?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US&page=1'
-      )
-
-      .then(({ data }) => {
-        setMoviePopular(data.results);
-      });
+    Axios.get(
+      'https://api.themoviedb.org/3/movie/popular?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US&page=1'
+    ).then(({ data }) => {
+      setMoviePopular(data.results);
+    });
   }, []);
 
   useEffect(() => {
@@ -50,25 +44,19 @@ export default function Carousel() {
       ...properties,
       slidesToShow: window.matchMedia('(min-width: 780px)').matches ? 10 : 1,
     });
-    axios
-      .get(
-        'https://api.themoviedb.org/3/movie/now_playing?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US&page=1&region=FR'
-      )
-
-      .then(({ data }) => {
-        setMovieUpcoming(data.results);
-      });
+    Axios.get(
+      'https://api.themoviedb.org/3/movie/now_playing?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US&page=1&region=FR'
+    ).then(({ data }) => {
+      setMovieUpcoming(data.results);
+    });
   }, [window.innerWidth]);
 
   useEffect(() => {
-    axios
-      .get(
-        'https://api.themoviedb.org/3/movie/now_playing?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US&page=1&region=FR'
-      )
-
-      .then(({ data }) => {
-        setMovieUpcoming(data.results);
-      });
+    Axios.get(
+      'https://api.themoviedb.org/3/movie/now_playing?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US&page=1&region=FR'
+    ).then(({ data }) => {
+      setMovieUpcoming(data.results);
+    });
   }, []);
 
   useEffect(() => {
@@ -76,25 +64,19 @@ export default function Carousel() {
       ...properties,
       slidesToShow: window.matchMedia('(min-width: 780px)').matches ? 10 : 1,
     });
-    axios
-      .get(
-        'https://api.themoviedb.org/3/movie/top_rated?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US&page=1&region=FR'
-      )
-
-      .then(({ data }) => {
-        setMovieRating(data.results);
-      });
+    Axios.get(
+      'https://api.themoviedb.org/3/movie/top_rated?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US&page=1&region=FR'
+    ).then(({ data }) => {
+      setMovieRating(data.results);
+    });
   }, [window.innerWidth]);
 
   useEffect(() => {
-    axios
-      .get(
-        'https://api.themoviedb.org/3/movie/top_rated?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US&page=1&region=FR'
-      )
-
-      .then(({ data }) => {
-        setMovieRating(data.results);
-      });
+    Axios.get(
+      'https://api.themoviedb.org/3/movie/top_rated?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US&page=1&region=FR'
+    ).then(({ data }) => {
+      setMovieRating(data.results);
+    });
   }, []);
 
   return (

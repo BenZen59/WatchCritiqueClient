@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import Axios from 'axios';
 import Addlist from '../../img/addlist.png';
 import Play from '../../img/play.png';
 import './Film.css';
@@ -21,57 +21,48 @@ export default function Film() {
   const [dashoffset, setDashoffset] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(
-        'https://api.themoviedb.org/3/movie/10228?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=FR'
-      )
-      .then(({ data }) => {
-        setTitle(data.title);
-        setVoteAverage(data.vote_average);
-        setOverview(data.overview);
-        setRuntime(data.runtime);
-        setReleaseDate(data.release_date);
-        setGenre(data.genres);
-      });
+    Axios.get(
+      'https://api.themoviedb.org/3/movie/10228?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=FR'
+    ).then(({ data }) => {
+      setTitle(data.title);
+      setVoteAverage(data.vote_average);
+      setOverview(data.overview);
+      setRuntime(data.runtime);
+      setReleaseDate(data.release_date);
+      setGenre(data.genres);
+    });
   }, []);
 
   useEffect(() => {
-    axios
-      .get(
-        'https://api.themoviedb.org/3/movie/10228/release_dates?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
-      )
-      .then(({ data }) => {
-        setReleaseDateCountry(data.results[0].release_dates[0].release_date);
-        setIso(data.results);
-      });
+    Axios.get(
+      'https://api.themoviedb.org/3/movie/10228/release_dates?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
+    ).then(({ data }) => {
+      setReleaseDateCountry(data.results[0].release_dates[0].release_date);
+      setIso(data.results);
+    });
   }, []);
 
   useEffect(() => {
-    axios
-      .get(
-        'https://api.themoviedb.org/3/movie/10228/credits?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US'
-      )
-      .then(({ data }) => {
-        setDirector(data.crew);
-        setActor(data.cast);
-      });
+    Axios.get(
+      'https://api.themoviedb.org/3/movie/10228/credits?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US'
+    ).then(({ data }) => {
+      setDirector(data.crew);
+      setActor(data.cast);
+    });
   }, []);
 
   useEffect(() => {
-    axios
-      .get(
-        'https://api.themoviedb.org/3/movie/10228/images?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
-      )
-      .then(({ data }) => {
-        setBackdrop(data.posters[0].file_path);
-      });
+    Axios.get(
+      'https://api.themoviedb.org/3/movie/10228/images?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
+    ).then(({ data }) => {
+      setBackdrop(data.posters[0].file_path);
+    });
   }, []);
 
   useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/10228/videos?api_key=599ded6f0fc3bcaee1882e83ae0d438a`
-      )
+    Axios.get(
+      `https://api.themoviedb.org/3/movie/10228/videos?api_key=599ded6f0fc3bcaee1882e83ae0d438a`
+    )
       .then(({ data }) => {
         setTrailer(data.results);
       })

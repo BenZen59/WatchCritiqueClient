@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import Login from '../../img/login.png';
+import { NavLink } from 'react-router-dom';
+import LoginImg from '../../img/login.png';
 import './Header.css';
 
 export default function Header() {
+  const CallLogin = () => {};
+
   return (
     <div className='nav'>
       <span className='watchcritique'>WATCHCRITIQUE 👀✏</span>
@@ -17,7 +18,11 @@ export default function Header() {
           <i class='fa fa-search'></i>
         </button>
       </form>
-      <img src={Login} alt='logimg' className='logImg' title='Login' />
+      <button className='buttonlogin' title='Login' onClick={CallLogin}>
+        <NavLink to='/login'>
+          <img src={LoginImg} alt='login' />
+        </NavLink>
+      </button>
     </div>
   );
 }
