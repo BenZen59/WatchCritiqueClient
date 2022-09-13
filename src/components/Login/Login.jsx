@@ -1,17 +1,20 @@
 import './Login.css';
 import { useState, useEffect } from 'react';
-import TEST from 'axios';
+import Axios from 'axios';
 
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
   const [loginStatus, setLoginStatus] = useState(false);
 
-  TEST.defaults.withCredentials = true;
+  Axios.defaults.withCredentials = true;
+
+  const refreshPage = () => {
+    window.location.reload();
+  };
 
   const login = () => {
-    TEST.post('http://localhost:3001/login', {
+    Axios.post('http://localhost:3001/login', {
       username: username,
       password: password,
     }).then((response) => {
@@ -25,18 +28,8 @@ export default function Login() {
     });
   };
 
-  // const userAuthenticated = () => {
-  //   TEST.get('http://localhost:3001/isUserAuth', {
-  //     headers: {
-  //       'x-access-token': localStorage.getItem('token'),
-  //     },
-  //   }).then((response) => {
-  //     console.log(response);
-  //   });
-  // };
-
   useEffect(() => {
-    TEST.get('http://localhost:3001/login').then((response) => {
+    Axios.get('http://localhost:3001/login').then((response) => {
       if (response.data.loggedIn === true) {
         setLoginStatus(response.data.user[0].username);
       }
@@ -66,13 +59,17 @@ export default function Login() {
         />
         <br />
         <br />
-        <button class='submit' type='submit' onClick={login}>
+        <button
+          class='submit'
+          type='submit'
+          onClick={() => {
+            login();
+            refreshPage();
+          }}
+        >
           Se connecter
         </button>
       </div>
-      {/* {loginStatus && (
-        <button onClick={userAuthenticated}> Check if Authenticated </button>
-      )} */}
     </div>
   );
 }
