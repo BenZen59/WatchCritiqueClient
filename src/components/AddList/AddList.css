@@ -1,0 +1,81 @@
+.addlist{
+  width:  600px;
+  height: auto;
+  box-shadow: 5px 0px 15px 0px #000000;
+  margin-left: 35vw;
+  margin-top: 5vh;
+}
+
+.myList{
+  width:  auto;
+  height: 46px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  color: whitesmoke;
+  background-color: #333;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.registerList{
+  width: 116px;
+  height: 42px;
+  font-family: Arial, Helvetica, sans-serif;
+  border: none;
+  color: whitesmoke;
+  background-color: #333;
+  border-radius: 4px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 12px 18px;
+  font-size: 16px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 460px;
+  cursor: pointer;
+}
+
+.addListItem{
+  width: 509px;
+  height: 52px;
+  border-left: 6px solid #333;
+  border-top: 1px solid gray;
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
+  border-radius: 4px;
+  color: #333;
+  background-color: whitesmoke;
+  padding-left: 16px;
+  padding-top: 16px;
+  margin-left: 40px;
+  margin-top: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  display: flex;
+}
+
+.voir{
+  cursor: pointer;
+  color: whitesmoke;
+  background-color: #333;
+  border-radius: 4px;
+  margin-left: 30px;
+  margin-top: 4px;
+  width: 50px;
+  height: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  border: none;
+  font-size: 13px;
+}
+
+.checkbox{
+  margin-right: 10px;
+  margin-top: 6px;
+  width: 20px;
+  height: 20px;
+}
+
+.namecheck{
+  width: 400px;
+  
+}

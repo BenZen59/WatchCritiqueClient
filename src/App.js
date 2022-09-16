@@ -4,7 +4,7 @@ import Carousel from './components/Carousel/Carousel';
 import Film from './components/Film/Film';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
-import List from './components/List/List';
+import AddList from './components/AddList/AddList';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
           <Route path='/film' element={<Film />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/register' element={<List />} />
+          <Route path='/addlist' element={<AddList />} />
         </Routes>
       </BrowserRouter>
     </div>
