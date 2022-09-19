@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import Axios from 'axios';
 import Addlist from '../../img/addlist.png';
 import Play from '../../img/play.png';
+
+import AddList from '../AddList/AddList';
 import './Film.css';
 
 export default function Film() {
@@ -19,6 +21,7 @@ export default function Film() {
   const [releaseDateCountry, setReleaseDateCountry] = useState([]);
   const [color, setColor] = useState([]);
   const [dashoffset, setDashoffset] = useState([]);
+  const [inputList, setInputList] = useState([]);
 
   useEffect(() => {
     Axios.get(
@@ -120,8 +123,12 @@ export default function Film() {
     strokeDashoffset: dashoffset,
   };
 
+  const clickAddList = (event) => {
+    setInputList(inputList.concat(<AddList />));
+  };
   return (
     <div>
+      {inputList}
       <div className='infoFilm'>
         <img
           className='backgroundPoster'
@@ -166,6 +173,7 @@ export default function Film() {
               <button
                 className='buttonaddlist'
                 title='Ajouter le film à une liste'
+                onClick={clickAddList}
               >
                 <img src={Addlist} alt='imageaddlist' />
               </button>

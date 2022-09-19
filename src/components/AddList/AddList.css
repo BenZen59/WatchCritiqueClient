@@ -1,14 +1,26 @@
+.blackzone{
+  z-index: 1;
+  background-color: rgba(51, 51, 51, 0.7);
+  height: 99vh;
+  width: 99vw;
+  position: absolute;
+} 
+
 .addlist{
   width:  600px;
   height: auto;
   box-shadow: 5px 0px 15px 0px #000000;
   margin-left: 35vw;
   margin-top: 5vh;
+  position: absolute;
+  z-index: 3;
+  opacity: 1;
+  background-color: whitesmoke;
 }
 
 .myList{
   width:  auto;
-  height: 46px;
+  height: 60px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 32px;
   color: whitesmoke;
@@ -16,6 +28,7 @@
   font-weight: bold;
   text-align: center;
   padding-top: 10px;
+  opacity: 1;
 }
 
 .registerList{
@@ -33,6 +46,7 @@
   margin-bottom: 15px;
   margin-left: 460px;
   cursor: pointer;
+  opacity: 1;
 }
 
 .addListItem{
@@ -52,6 +66,7 @@
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
   display: flex;
+  opacity: 1;
 }
 
 .voir{
@@ -66,6 +81,7 @@
   font-family: Arial, Helvetica, sans-serif;
   border: none;
   font-size: 13px;
+  opacity: 1;
 }
 
 .checkbox{
@@ -73,9 +89,22 @@
   margin-top: 6px;
   width: 20px;
   height: 20px;
+  opacity: 1;
 }
  
 .namecheck{
   width: 400px;
+  opacity: 1;
   
 }
+
+.buttoncloselist{
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 25px;
+  margin-top: 3px;
+  margin-left: 420px;
+  cursor: pointer;
+}
+
