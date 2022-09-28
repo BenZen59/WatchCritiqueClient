@@ -1,0 +1,55 @@
+.list{
+  box-shadow: 5px 5px 15px 0px #000000;
+  width: 308px;
+  margin-top: 30px;
+  margin-right: 50px;
+  
+}
+
+.imgList{
+  width: 128px;
+  padding-left: 84px;
+  padding-right: 86px;
+  margin-left: 5px;
+  box-shadow: 0px 0px 0px 5px #000000;
+}
+
+.nameList{
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.nameList:hover{
+  text-decoration: underline;
+}
+
+.flexlist{
+  display: flex;
+  justify-content: center;
+  
+}
+
+.buttoncreatelist{
+  width: 189px;
+  height: 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 6px 12px;
+  color: whitesmoke;
+  background-color: #333;
+  margin-top: 30px;
+  margin-left: 31.5%;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-around;
+  cursor: pointer;
+}
+
+.buttoncreatelist img{
+  width: 16px;
+  height: 16px;
+  filter: invert(1);
+}

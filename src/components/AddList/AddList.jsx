@@ -7,7 +7,7 @@ export default function AddList() {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/addlist').then(({ data }) => {
+    axios.get('http://localhost:3001/list').then(({ data }) => {
       setList(data);
     });
   }, []);
