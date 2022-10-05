@@ -25,7 +25,7 @@ export default function Film() {
 
   useEffect(() => {
     Axios.get(
-      'https://api.themoviedb.org/3/movie/10228?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=FR'
+      'https://api.themoviedb.org/3/movie/122?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=FR'
     ).then(({ data }) => {
       setTitle(data.title);
       setVoteAverage(data.vote_average);
@@ -38,7 +38,7 @@ export default function Film() {
 
   useEffect(() => {
     Axios.get(
-      'https://api.themoviedb.org/3/movie/10228/release_dates?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
+      'https://api.themoviedb.org/3/movie/122/release_dates?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
     ).then(({ data }) => {
       setReleaseDateCountry(data.results[0].release_dates[0].release_date);
       setIso(data.results);
@@ -47,7 +47,7 @@ export default function Film() {
 
   useEffect(() => {
     Axios.get(
-      'https://api.themoviedb.org/3/movie/10228/credits?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US'
+      'https://api.themoviedb.org/3/movie/122/credits?api_key=599ded6f0fc3bcaee1882e83ae0d438a&language=en-US'
     ).then(({ data }) => {
       setDirector(data.crew);
       setActor(data.cast);
@@ -56,7 +56,7 @@ export default function Film() {
 
   useEffect(() => {
     Axios.get(
-      'https://api.themoviedb.org/3/movie/10228/images?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
+      'https://api.themoviedb.org/3/movie/122/images?api_key=599ded6f0fc3bcaee1882e83ae0d438a'
     ).then(({ data }) => {
       setBackdrop(data.posters[0].file_path);
     });
@@ -64,7 +64,7 @@ export default function Film() {
 
   useEffect(() => {
     Axios.get(
-      `https://api.themoviedb.org/3/movie/10228/videos?api_key=599ded6f0fc3bcaee1882e83ae0d438a`
+      `https://api.themoviedb.org/3/movie/122/videos?api_key=599ded6f0fc3bcaee1882e83ae0d438a`
     )
       .then(({ data }) => {
         setTrailer(data.results);
