@@ -20,8 +20,8 @@ export default function AddList() {
     <div className='blackzone'>
       <div className='addlist'>
         <div className='myList'>
-          <span className='listheader'>Listes</span>
-          <button className='buttoncloselist' title='Close list'>
+          <span className='addlistheader'>Listes</span>
+          <button className='buttoncloseaddlist' title='Close list'>
             <img src={Close} alt='closelist' onClick={refreshPage} />
           </button>
         </div>

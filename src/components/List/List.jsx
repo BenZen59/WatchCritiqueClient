@@ -1,14 +1,16 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import './List.css';
 import ListeImage from '../../img/listeimage.png';
 import Addlist from '../../img/addlist.png';
 import Close from '../../img/close.png';
+import NewList from '../NewList/NewList';
+import './List.css';
 
 const client = axios.create({ baseURL: 'http://localhost:3001/list' });
 
 export default function List() {
   const [list, setList] = useState([]);
+  const [inputNewList, setInputNewList] = useState(false);
 
   useEffect(() => {
     client.get('').then((response) => {
@@ -26,12 +28,22 @@ export default function List() {
     window.location.reload();
   };
 
+  const clickNewList = (event) => {
+    setInputNewList(inputNewList.concat(<NewList />));
+  };
+
   return (
     <div>
-      <button className='buttoncreatelist'>
+      {inputNewList ? <NewList /> : null}
+      <button
+        className='buttoncreatelist'
+        title='Créer une liste'
+        onClick={() => setInputNewList(true)}
+      >
         <img src={Addlist} alt='imageaddlist' />
         Crée une nouvelle liste
       </button>
+
       <div className='flexlist'>
         {list.map((list) => {
           return (

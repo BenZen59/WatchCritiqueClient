@@ -5,6 +5,7 @@ import Film from './components/Film/Film';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import AddList from './components/AddList/AddList';
+import NewList from './components/NewList/NewList';
 import List from './components/List/List';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -20,6 +21,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/addlist' element={<AddList />} />
+          <Route path='/newlist' element={<NewList />} />
           <Route path='/list' element={<List />} />
         </Routes>
       </BrowserRouter>

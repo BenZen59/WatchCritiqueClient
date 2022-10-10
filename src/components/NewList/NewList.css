@@ -6,7 +6,7 @@
   position: absolute;
 } 
 
-.addlist{
+.newlist{
   width:  600px;
   height: auto;
   box-shadow: 5px 0px 15px 0px #000000;
@@ -50,64 +50,19 @@
   opacity: 1;
 }
 
-
-.addListItem{
-  width: 509px;
-  height: 52px;
-  border-left: 6px solid #333;
-  border-top: 1px solid gray;
-  border-right: 1px solid gray;
-  border-bottom: 1px solid gray;
-  border-radius: 4px;
-  color: #333;
-  background-color: whitesmoke;
-  padding-left: 16px;
-  padding-top: 16px;
-  margin-left: 40px;
-  margin-top: 15px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  display: flex;
-  opacity: 1;
-}
-
-.voir{
-  cursor: pointer;
-  color: whitesmoke;
-  background-color: #333;
-  border-radius: 4px;
-  margin-left: 30px;
-  margin-top: 4px;
-  width: 50px;
-  height: 30px;
-  font-family: Arial, Helvetica, sans-serif;
-  border: none;
-  font-size: 13px;
-  opacity: 1;
-}
-
-.checkbox{
-  margin-right: 10px;
-  margin-top: 6px;
-  width: 20px;
-  height: 20px;
-  opacity: 1;
-}
- 
 .namecheck{
   width: 400px;
   opacity: 1;
   
 }
 
-.buttoncloseaddlist{
+.buttonclosenewlist{
   width: 44px;
   height: 44px;
   border: none;
   border-radius: 25px;
-  margin-left: 420px;
   margin-top: 3px;
+  margin-left: 217px;
   cursor: pointer;
 }
-
 
