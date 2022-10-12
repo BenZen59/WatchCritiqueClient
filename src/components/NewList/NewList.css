@@ -29,6 +29,7 @@
   text-align: center;
   padding-top: 10px;
   opacity: 1;
+  margin-bottom: 20px;
 }
 
 
@@ -45,7 +46,7 @@
   font-size: 16px;
   margin-top: 15px;
   margin-bottom: 15px;
-  margin-left: 460px;
+  margin-left: 100px;
   cursor: pointer;
   opacity: 1;
 }
@@ -66,3 +67,23 @@
   cursor: pointer;
 }
 
+.labelnewlist{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  margin-left: 15px;
+  
+}
+
+.namenewlist{
+  margin-left: 15px;
+  width: 327px;
+  height: 44px;
+  padding-left: 9px;
+  font-size: 20px;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+.flexnewlist{
+  display: flex;
+}

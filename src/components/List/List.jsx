@@ -28,10 +28,6 @@ export default function List() {
     window.location.reload();
   };
 
-  const clickNewList = (event) => {
-    setInputNewList(inputNewList.concat(<NewList />));
-  };
-
   return (
     <div>
       {inputNewList ? <NewList /> : null}
